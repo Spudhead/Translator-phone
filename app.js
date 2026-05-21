@@ -11,6 +11,8 @@ const inputMeter = document.querySelector("#inputMeter");
 const chunksSent = document.querySelector("#chunksSent");
 const translatedTranscript = document.querySelector("#translatedTranscript");
 const eventLog = document.querySelector("#eventLog");
+const btnTextMinus = document.querySelector("#btnTextMinus");
+const btnTextPlus = document.querySelector("#btnTextPlus");
 
 let peerConnection = null;
 let dataChannel = null;
@@ -26,6 +28,18 @@ const savedKey = localStorage.getItem("openai_api_key");
 if (savedKey) {
   apiKeyInput.value = savedKey;
 }
+
+let currentFontSize = 1.5;
+
+btnTextMinus.addEventListener("click", () => {
+  currentFontSize = Math.max(1.0, currentFontSize - 0.25);
+  translatedTranscript.style.fontSize = `${currentFontSize}rem`;
+});
+
+btnTextPlus.addEventListener("click", () => {
+  currentFontSize = Math.min(4.0, currentFontSize + 0.25);
+  translatedTranscript.style.fontSize = `${currentFontSize}rem`;
+});
 
 muteAudio.addEventListener("change", () => {
   if (translatedAudio) {

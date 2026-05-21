@@ -57,7 +57,13 @@
 
       <section class="workspace">
         <article class="transcript-card">
-          <h2>Translated Text</h2>
+          <div class="transcript-header">
+            <h2>Translated Text</h2>
+            <div class="text-size-controls">
+              <button id="btnTextMinus" type="button" class="btn-text-size">-</button>
+              <button id="btnTextPlus" type="button" class="btn-text-size">+</button>
+            </div>
+          </div>
           <div id="translatedTranscript" class="transcript" aria-live="polite">
             <div class="placeholder">Translations will appear here...</div>
           </div>
