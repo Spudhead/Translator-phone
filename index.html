@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>AirPods Translator</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Realtime Duplex</p>
+          <h1>Translator</h1>
+        </div>
+        <div class="status-card" aria-live="polite">
+          <div class="status-panel">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Disconnected</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="control-dock" aria-label="Translation controls">
+        <div class="dock-section field" id="apiKeySection">
+          <label for="apiKey">OpenAI API Key</label>
+          <input type="password" id="apiKey" placeholder="sk-..." />
+          <p class="helper-text">Stored securely on your device.</p>
+        </div>
+
+        <div class="dock-section field">
+          <label for="targetLanguage">Target language</label>
+          <select id="targetLanguage">
+            <option value="en" selected>English</option>
+            <option value="ja">Japanese</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="zh">Chinese</option>
+            <option value="de">German</option>
+            <option value="ko">Korean</option>
+          </select>
+        </div>
+
+        <div class="dock-section toggle-control">
+          <label class="switch">
+            <input type="checkbox" id="muteAudio" />
+            <span class="slider round"></span>
+          </label>
+          <span class="toggle-label">Mute spoken translation</span>
+        </div>
+
+        <div class="dock-section button-row">
+          <button id="startButton" type="button">Start Translating</button>
+          <button id="stopButton" type="button" class="secondary" disabled>Stop</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <article class="transcript-card">
+          <h2>Translated Text</h2>
+          <div id="translatedTranscript" class="transcript" aria-live="polite">
+            <div class="placeholder">Translations will appear here...</div>
+          </div>
+        </article>
+
+        <article class="log-card">
+          <h2>Diagnostics</h2>
+          <dl class="diagnostics">
+            <div>
+              <dt>Mic Level</dt>
+              <dd><meter id="inputMeter" min="0" max="1" value="0"></meter></dd>
+            </div>
+            <div>
+              <dt>WebRTC</dt>
+              <dd id="chunksSent">new</dd>
+            </div>
+          </dl>
+          <div id="eventLog" class="log" aria-live="polite"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
