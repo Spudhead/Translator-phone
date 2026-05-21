@@ -260,8 +260,15 @@ function appendTranslatedText(text) {
   const placeholder = translatedTranscript.querySelector(".placeholder");
   if (placeholder) placeholder.remove();
   
+  // Check if user is near the bottom before appending text (50px tolerance)
+  const isScrolledToBottom = translatedTranscript.scrollHeight - translatedTranscript.scrollTop - translatedTranscript.clientHeight < 50;
+  
   translatedTranscript.textContent += text;
-  translatedTranscript.scrollTop = translatedTranscript.scrollHeight;
+  
+  // Only auto-scroll if they were already at the bottom
+  if (isScrolledToBottom) {
+    translatedTranscript.scrollTop = translatedTranscript.scrollHeight;
+  }
 }
 
 function clearTranscript() {

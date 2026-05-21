@@ -140,10 +140,10 @@ article {
 }
 
 .transcript-card {
-  flex-grow: 1;
+  height: 75vh;
+  flex: none;
   display: flex;
   flex-direction: column;
-  min-height: 50vh;
 }
 
 .dock-section {
